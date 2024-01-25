@@ -9,7 +9,7 @@ function App() {
   const [currentPlayer, setCurrentPlayer] = useState('X');
   const [gameBoard, setGameBoard] = useState(Array(9).fill(''));
   const { width, height } = useWindowSize()
-  // const [showPopup, setShowPopup] = useState(false);
+ 
 
 
 
@@ -25,8 +25,8 @@ function App() {
         } else if (mode === 'ai' && currentPlayer === 'X') {
           setCurrentPlayer('O');
           setTimeout(() => {
-            handleAIMove(newBoard); // Pass the current board to handleAIMove
-          }, 500); // Adjust timing as needed
+            handleAIMove(newBoard);
+          }, 500); 
         }
       }
     }
@@ -73,10 +73,10 @@ function App() {
   const handleReset = () => {
     setGameBoard(Array(9).fill(''));
     setCurrentPlayer('X');
-    // setShowPopup(false);
+  
   };
 
-  // Function to check game status (win/draw)
+ 
   const checkGameStatus = (board) => {
     const lines = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
@@ -84,22 +84,21 @@ function App() {
       [0, 4, 8], [2, 4, 6]             // Diagonals
     ];
   
-    // Check for a winner
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        // setShowPopup(true);
-        return `Player ${board[a]} wins!`; // Return the winner
+    
+        return `Player ${board[a]} wins!`;
       }
     }
   
-    // Check for a draw
+
     if (!board.includes('')) {
-      // setShowPopup(true);
+ 
       return 'It\'s a draw!';
     }
   
-    // Game is still in progress
+  
     return 'Game in progress';
   };
 
@@ -134,8 +133,8 @@ function App() {
         {gameStatus.includes('wins') && (
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Confetti
-            width={width} // Specify the width of the container for confetti
-            height={height} // Specify the height of the container for confetti
+            width={width} 
+            height={height} 
             recycle={false} 
           />
         </div>
